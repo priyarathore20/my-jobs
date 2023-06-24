@@ -1,12 +1,12 @@
-import React, { createContext } from 'react'
+import React, { createContext } from "react"
 
-const FirebaseContext = createContext(null)
+const Context = createContext(null)
 
 const FirebaseProvider = (props) => {
   return (
-    <FirebaseContext.Provider>
+    <Context.Provider>
       {props.children}
-    </FirebaseContext.Provider>
+    </Context.Provider>
   )
 }
 

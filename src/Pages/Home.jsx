@@ -7,7 +7,9 @@ const HomePage = () => {
     <div className="bg">
       <div className="upper">
         <div className='navbar'>
-          <h1 className="logo">MyJobs</h1>
+          <h1 className="logo">
+            My </h1> <span>Jobs</span>
+
           <button className="nav-login">Login/Signup</button>
         </div>
         <div className="upper-section">

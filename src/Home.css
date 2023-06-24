@@ -18,12 +18,16 @@
 }
 .navbar{
   height: 60px;
+  width: 100%;
   border-bottom: 2px solid #4D618E;
   border-width: 3px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+}
+.logo span{
+  color: rgb(67, 175, 255);
 }
 .logo{
 height: 26px;
