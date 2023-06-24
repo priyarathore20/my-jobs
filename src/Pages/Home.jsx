@@ -1,5 +1,5 @@
 import React from 'react'
-import '../App.css';
+import '../Home.css';
 import Card from '../Components/Card';
 
 const HomePage = () => {
