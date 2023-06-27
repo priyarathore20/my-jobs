@@ -4,6 +4,7 @@ import HomePage from './Pages/Home';
 import Loginpage from './Pages/Loginpage';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
+import AvailableJobs from './Pages/AvailableJobs';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path={'/login'} element={<Loginpage />} />
         <Route path={'/password-reset'} element={<ForgotPassword />} />
         <Route path={'/new-password'} element={<ResetPassword />} />
+        <Route path={'/available-jobs'} element={<AvailableJobs />} />
       </Routes>
     </BrowserRouter>
   );
