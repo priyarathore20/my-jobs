@@ -8,8 +8,8 @@ const HomePage = () => {
       <div className="upper">
         <div className='navbar'>
           <h1 className="logo">
-            My </h1> <span>Jobs</span>
-
+            MyJobs
+          </h1>
           <button className="nav-login">Login/Signup</button>
         </div>
         <div className="upper-section">
