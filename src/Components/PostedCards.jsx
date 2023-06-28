@@ -1,7 +1,14 @@
 import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
+import NewPost from './NewPost';
 
 const PostedCards = () => {
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    < NewPost />
+  }
+
   return (
     <div className="Job-cards">
       <div className="job-card">
@@ -15,7 +22,7 @@ const PostedCards = () => {
               <FaMapMarkerAlt />
               <p>Delhi</p>
             </div>
-            <button className="btn-primary-1">View Applications</button>
+            <button onClick={handleClick} className="btn-primary-1">View Applications</button>
           </div>
         </div>
       </div>
