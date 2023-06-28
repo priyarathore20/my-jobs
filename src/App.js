@@ -5,6 +5,7 @@ import Loginpage from './Pages/Loginpage';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import AvailableJobs from './Pages/AvailableJobs';
+import PostedJobs from './Pages/PostedJobs';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path={'/password-reset'} element={<ForgotPassword />} />
         <Route path={'/new-password'} element={<ResetPassword />} />
         <Route path={'/available-jobs'} element={<AvailableJobs />} />
+        <Route path={'/posted-jobs'} element={<PostedJobs />} />
       </Routes>
     </BrowserRouter>
   );

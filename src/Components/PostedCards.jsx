@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 
-const JobCards = () => {
+const PostedCards = () => {
   return (
     <div className="Job-cards">
       <div className="job-card">
@@ -12,15 +12,16 @@ const JobCards = () => {
           <p className="jobcard-text">job information is given below.</p>
           <div className='jobcard-btn'>
             <div className='jobcard-icon'>
-              < FaMapMarkerAlt />
+              <FaMapMarkerAlt />
               <p>Delhi</p>
             </div>
-            <button className="btn-primary">Apply</button>
+            <button className="btn-primary-1">View Applications</button>
           </div>
         </div>
       </div>
     </div>
+
   )
 }
 
-export default JobCards
+export default PostedCards

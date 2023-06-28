@@ -214,31 +214,30 @@ opacity: 1;
     padding: 20px;
     background-color: #fff;
     display: flex;
-    align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
     /* margin: 10px; */
   }
-  .card-body{
+  .jobcard-body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .card-title {
+  .jobcard-title {
     padding: 10px;
     color: #303F60;
     font-size:larger;
   }
-  .card-text{
+  .jobcard-text{
     font-size: large;
     padding: 10px;
   }
-  .card-btn{
+  .jobcard-btn{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-  .card-icon{
+  .jobcard-icon{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -248,6 +247,19 @@ opacity: 1;
     color: #FFFFFF;
 font-size: 20px;
 width: 100px;
+height: 46px;
+background: var(--unnamed-color-43afff) 0% 0% no-repeat padding-box;
+border: 1px solid var(--unnamed-color-43afff);
+background: #43AFFF 0% 0% no-repeat padding-box;
+border: 1px solid #43AFFF;
+border-radius: 5px;
+margin: 10px;
+
+  }
+  .btn-primary-1{
+    color: #FFFFFF;
+font-size: 20px;
+width: 120px;
 height: 46px;
 background: var(--unnamed-color-43afff) 0% 0% no-repeat padding-box;
 border: 1px solid var(--unnamed-color-43afff);
