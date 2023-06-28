@@ -11,7 +11,7 @@ const AvailableJobs = () => {
             <img style={{ height: '50px', borderRadius: 50, }} src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="#" />
           </button>
         </div>
-        <div className="upper-section">
+        <div className="upper-section 1">
           < JobCards />
           < JobCards />
           < JobCards />
