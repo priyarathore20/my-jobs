@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Home.css';
 import Card from '../Components/Card';
+import CompaniesLogo from '../Components/Logo';
 
 const HomePage = () => {
   return (
@@ -29,6 +30,7 @@ const HomePage = () => {
       </div>
       <div className="lower">
         <Card />
+        < CompaniesLogo />
       </div>
     </div>
   )

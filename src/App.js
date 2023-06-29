@@ -6,6 +6,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import AvailableJobs from './Pages/AvailableJobs';
 import PostedJobs from './Pages/PostedJobs';
+import Signup from './Pages/Signup';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={<HomePage />} />
         <Route path={'/login'} element={<Loginpage />} />
+        <Route path={'/signup'} element={<Signup />} />
         <Route path={'/password-reset'} element={<ForgotPassword />} />
         <Route path={'/new-password'} element={<ResetPassword />} />
         <Route path={'/available-jobs'} element={<AvailableJobs />} />

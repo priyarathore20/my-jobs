@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "../Home.css"
+import Input from '../Components/input'
 
 const Loginpage = () => {
   const [email, setEmail] = useState()
@@ -15,10 +16,8 @@ const Loginpage = () => {
           <div className="login-card">
             <h4 className='login-title'>Login</h4>
             <div className='login-details'>
-              <label >Email address</label>
-              <input className='input' type="email" placeholder='Enter your email' onChange={e => setEmail(e.target.value)} value={email} />
-              <label >Password</label>
-              <input className='input' type="password" placeholder='Enter your Password' onChange={e => setPassword(e.target.value)} value={password} />
+              <Input label='Email address' type='text' placeholder='Enter your email' />
+              <Input label='Password' type='password' placeholder='Enter password' />
               <a href="/password-reset">Forgot Your Password?</a>
             </div>
             <button className='login-btn' type="button" >Submit</button>
