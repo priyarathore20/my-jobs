@@ -9,7 +9,7 @@ const Signup = () => {
       <div className='navbar'>
         <h1 className="logo">MyJobs</h1>
       </div>
-      <div className='card'>
+      <div className='signup-card'>
         <h2>Signup</h2>
         <span>i'm a</span>
         <div className="buttons">

@@ -22,18 +22,10 @@
   border-bottom: 2px solid #4D618E;
   border-width: 3px;
   display: flex;
+  padding-bottom:  10px;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-}
-.logo span{
-  color: rgb(67, 175, 255);
-}
-.logo{
-height: 26px;
-width: 82px;
-margin: 22px 70px;
-color: #FFFFFF;
 }
 .nav-login{
    width: 102px;
@@ -200,65 +192,10 @@ opacity: 1;
   .reset-details{
     margin: 10px;
   }
-  /* .Job-cards{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10px;
-  } */
-  .job-card{
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* margin: 10px; */
-  }
-  .jobcard-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .jobcard-title {
-    padding: 10px;
-    color: #303F60;
-    font-size:larger;
-  }
-  .jobcard-text{
-    font-size: large;
-    padding: 10px;
-  }
-  .jobcard-btn{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .jobcard-icon{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-  }
   .btn-primary{
     color: #FFFFFF;
 font-size: 20px;
 width: 100px;
-height: 46px;
-background: var(--unnamed-color-43afff) 0% 0% no-repeat padding-box;
-border: 1px solid var(--unnamed-color-43afff);
-background: #43AFFF 0% 0% no-repeat padding-box;
-border: 1px solid #43AFFF;
-border-radius: 5px;
-margin: 10px;
-
-  }
-  .btn-primary-1{
-    color: #FFFFFF;
-font-size: 20px;
-width: 120px;
 height: 46px;
 background: var(--unnamed-color-43afff) 0% 0% no-repeat padding-box;
 border: 1px solid var(--unnamed-color-43afff);
