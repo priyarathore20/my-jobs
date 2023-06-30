@@ -1,0 +1,18 @@
+.new-title{
+  padding: 20px 0;
+  font-size: 30px;
+}
+.new-path{
+text-decoration: none;
+color: black;
+}
+.avatar{
+  margin-right: 50px;
+}
+.breadcrumb{
+  margin: 20px 30px 0 20px;
+  font-size: large;
+}
+.new-icon{
+padding-top: 2px;  
+}

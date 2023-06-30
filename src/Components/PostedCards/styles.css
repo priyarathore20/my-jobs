@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.jobcard-title {
+.jobcard-header {
   padding: 10px;
   color: #303F60;
   font-size:larger;

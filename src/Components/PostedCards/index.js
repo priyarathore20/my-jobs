@@ -7,7 +7,7 @@ const PostedCards = () => {
     <div className="Job-cards">
       <div className="job-card">
         <div className="jobcard-body">
-          <div className="card-header">Job No. : </div>
+          <div className="jobcard-header">Job No. : </div>
           <p className="jobcard-text">job information is given below.</p>
           <div className='jobcard-btn'>
             <div className='jobcard-icon'>

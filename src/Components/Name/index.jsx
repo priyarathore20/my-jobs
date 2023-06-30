@@ -3,7 +3,7 @@ import "./styles.css"
 
 const Name = () => {
   return (
-    <h1 className="name">MyJobs</h1>
+    <h2 className="name">MyJobs</h2>
   )
 }
 

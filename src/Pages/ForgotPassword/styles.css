@@ -1,0 +1,23 @@
+.password{
+  display: flex;
+  justify-content: center;
+}
+.password-card{
+  width: 557px;
+  height: 318px;
+  background: #ffffff;
+  box-shadow: 0px 30px 36px #557DA526;
+  border-radius: 20px;
+  margin-top: 50px;
+}
+.password-details{
+margin: 10px;
+}
+.password-title{
+  padding: 10px 0;
+  font-size: x-large;
+}
+.password-para{
+  padding: 10px 0;
+  font-size: large;
+}

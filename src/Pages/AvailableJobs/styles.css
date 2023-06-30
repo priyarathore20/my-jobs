@@ -1,0 +1,23 @@
+.avatar{
+  margin-right: 50px;
+}
+.applied-jobs{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+.apply-link{
+  color: white;
+  font-size: larger;
+  text-decoration: none;
+}
+.job-cards{
+  display: flex;
+  /* grid-template-columns: auto auto auto; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 50px;
+  margin: 50px;
+}

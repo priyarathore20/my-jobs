@@ -7,6 +7,7 @@ import ResetPassword from './Pages/ResetPassword';
 import AvailableJobs from './Pages/AvailableJobs';
 import PostedJobs from './Pages/PostedJobs';
 import Signup from './Pages/Signup';
+import NewPost from './Components/NewJob';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path={'/new-password'} element={<ResetPassword />} />
         <Route path={'/available-jobs'} element={<AvailableJobs />} />
         <Route path={'/posted-jobs'} element={<PostedJobs />} />
+        <Route path={'/post-a-job'} element={<NewPost />} />
       </Routes>
     </BrowserRouter>
   );

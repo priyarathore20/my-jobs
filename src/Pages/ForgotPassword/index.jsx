@@ -1,22 +1,24 @@
 import React from 'react'
-import "../Home.css"
+import "./styles.css"
+import Input from '../../Components/input'
+import Name from "../../Components/Name"
+import Button from "../../Components/Button"
 
 const ForgotPassword = () => {
   return (
-    <div className="bg">
-      <div className="upper">
+    <div className='body'>
+      <div>
         <div className='navbar'>
-          <h1 className="logo">MyJobs</h1>
+          <Name />
           <button className="nav-login">Login/Signup</button>
         </div>
-        <div className="upper-section">
+        <div className='password'>
           <div className="password-card">
             <div className="password-details">
               <h4 className='password-title'>Forgot Your Password?</h4>
               <p className='password-para'>Enter your email associated with your account and we will send you a confirmation code.</p>
-              <label>Email address</label>
-              <input className='input' placeholder='Enter yor email' />
-              <button className='login-btn'>Submit</button>
+              <Input label='Email address' placeholder='Enter your email' />
+              <Button text='Submit' />
             </div>
           </div>
         </div>
