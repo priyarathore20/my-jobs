@@ -1,6 +1,6 @@
 .job-card{
-  height: 250px;
-  width: 300px;
+  height: fit-content;
+  width: fit-content;
   padding: 20px;
   background-color: #fff;
   }

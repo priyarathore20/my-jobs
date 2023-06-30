@@ -13,11 +13,6 @@
   text-decoration: none;
 }
 .job-cards{
-  display: flex;
-  /* grid-template-columns: auto auto auto; */
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 50px;
-  margin: 50px;
+  display: grid;
+  grid-template-columns: auto auto auto;
 }

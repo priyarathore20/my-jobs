@@ -1,20 +1,21 @@
 import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
+import Button from "../../Components/Button"
 
-const PostedCards = () => {
+const PostedCards = (props) => {
 
   return (
     <div className="Job-cards">
       <div className="job-card">
         <div className="jobcard-body">
-          <div className="jobcard-header">Job No. : </div>
-          <p className="jobcard-text">job information is given below.</p>
+          <div className="jobcard-header">Job No. : {props.number}</div>
+          <p className="jobcard-text">{props.text}</p>
           <div className='jobcard-btn'>
             <div className='jobcard-icon'>
               <FaMapMarkerAlt />
-              <p>Delhi</p>
+              <p>{props.location}</p>
             </div>
-            <button className="jobcard-btn">View Applications</button>
+            <Button text={props.button} />
           </div>
         </div>
       </div>

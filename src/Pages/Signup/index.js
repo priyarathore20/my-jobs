@@ -2,12 +2,13 @@ import React from 'react'
 import "./Styles.css"
 import Button from '../../Components/Button'
 import Input from '../../Components/input'
+import Name from "../../Components/Name"
 
 const Signup = () => {
   return (
     <div className='body'>
       <div className='navbar'>
-        <h1 className="logo">MyJobs</h1>
+        <Name />
       </div>
       <div className='signup-card'>
         <h2>Signup</h2>

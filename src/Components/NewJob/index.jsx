@@ -15,7 +15,7 @@ const NewPost = () => {
         <div><Avatar className='avatar'>P</Avatar></div>
       </div>
       <div className="breadcrumb">
-        <p ><a className='new-path' href="/posted-jobs"><FaHome className='new-icon' /> Home </a><LiaGreaterThanSolid className='new-icon' /> New Post </p>
+        <p ><a className='new-path' href="/posted-jobs"><FaHome className='new-icon' /> Home </a><LiaGreaterThanSolid className='New-icon' /> New Post </p>
       </div>
       <div className='job-card'>
         <div >

@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './Pages/Home';
-import Loginpage from './Pages/Loginpage';
+import Loginpage from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import AvailableJobs from './Pages/AvailableJobs';
 import PostedJobs from './Pages/PostedJobs';
 import Signup from './Pages/Signup';
 import NewPost from './Components/NewJob';
+import AppliedJobs from './Pages/AppliedJobs';
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
         <Route path={'/new-password'} element={<ResetPassword />} />
         <Route path={'/available-jobs'} element={<AvailableJobs />} />
         <Route path={'/posted-jobs'} element={<PostedJobs />} />
-        <Route path={'/post-a-job'} element={<NewPost />} />
+        <Route path={'/new-post'} element={<NewPost />} />
+        <Route path={'/applied-jobs'} element={<AppliedJobs />} />
       </Routes>
     </BrowserRouter>
   );

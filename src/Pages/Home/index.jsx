@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css';
-import Card from '../../Components/Card';
+import HomeCards from "../../Components/HomeCards"
 import CompaniesLogo from '../../Components/Logo';
 import Name from "../../Components/Name"
 import Button from "../../Components/Button"
@@ -30,7 +30,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="lower">
-        <Card />
+        <HomeCards />
         < CompaniesLogo />
       </div>
     </div>

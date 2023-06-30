@@ -1,0 +1,22 @@
+.avatar{
+  margin-right: 50px;
+}
+.home{
+  margin: 20px 50px;
+  font-size: large;
+}
+.link{
+  text-decoration: none;
+  color: black;
+}
+.job-heading{
+  font-size: 2rem;
+  margin-left: 50px;
+}
+.job-heading-1{
+  margin: 20px 50px;
+  font-size: 30px;
+}
+.new-icon{
+  margin-left: 40px;
+}
