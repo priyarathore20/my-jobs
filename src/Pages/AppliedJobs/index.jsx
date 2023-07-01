@@ -19,19 +19,13 @@ const AppliedJobs = () => {
       <div >
         <p className="job-heading">Jobs Applied by you :</p>
       </div>
-      <div className="cards">
+      <div className="job-cards">
         <PostedCards number='1' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
         <PostedCards number='2' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
         <PostedCards number='3' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
         <PostedCards number='4' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
         <PostedCards number='5' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
         <PostedCards number='6' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
-        <PostedCards number='7' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
-        <PostedCards number='8' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
-        <PostedCards number='9' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
-        <PostedCards number='10' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
-        <PostedCards number='11' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
-        <PostedCards number='12' text='Job information given here.' location='Delhi' button='Applied on 17 may 2023' />
       </div>
     </div >
   )

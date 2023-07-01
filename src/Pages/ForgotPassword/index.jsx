@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./styles.css"
 import Input from '../../Components/input'
 import Name from "../../Components/Name"
 import Button from "../../Components/Button"
 
 const ForgotPassword = () => {
+  const [email, setEmail] = useState()
+
   return (
     <div className='body'>
       <div>
@@ -17,7 +19,7 @@ const ForgotPassword = () => {
             <div className="password-details">
               <h4 className='password-title'>Forgot Your Password?</h4>
               <p className='password-para'>Enter your email associated with your account and we will send you a confirmation code.</p>
-              <Input label='Email address' placeholder='Enter your email' />
+              <Input onChange={(e) => setEmail(e.target.value)} value={email} type='text' label='Email address' placeholder='Enter your email' />
               <Button text='Submit' />
             </div>
           </div>

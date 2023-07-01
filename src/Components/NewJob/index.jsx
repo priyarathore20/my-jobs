@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from "../../Components/Button"
 import Name from "../../Components/Name"
 import Input from '../../Components/input'
@@ -8,6 +8,10 @@ import "./styles.css"
 import { Avatar } from '@mui/material'
 
 const NewPost = () => {
+  const [jobTitle, setJobTitle] = useState()
+  const [jobDescription, setJobDescription] = useState()
+  const [jobLocation, setJobLocation] = useState()
+
   return (
     <div className='body'>
       <div className="navbar">
@@ -17,16 +21,18 @@ const NewPost = () => {
       <div className="breadcrumb">
         <p ><a className='new-path' href="/posted-jobs"><FaHome className='new-icon' /> Home </a><LiaGreaterThanSolid className='New-icon' /> New Post </p>
       </div>
-      <div className='job-card'>
-        <div >
-          <h3 className='new-title'>Post a Job</h3>
+      <div className='signup'>
+        <div className='post-card'>
+          <div >
+            <h3 className='new-title'>Post a Job</h3>
+          </div>
+          <div>
+            <Input onChange={(e) => setJobTitle(e.target.value)} value={jobTitle} type='text' label='Job Title*' placeholder='Enter job title' />
+            <Input onChange={(e) => setJobDescription(e.target.value)} value={jobDescription} type='text' label='Job Description*' placeholder='Enter job description' />
+            <Input onChange={(e) => setJobLocation(e.target.value)} value={jobLocation} type='text' label='Location*' placeholder='Enter location' />
+          </div>
+          <Button text='Post' />
         </div>
-        <div>
-          <Input label='Job Title*' placeholder='Enter job title' />
-          <Input label='Job Description*' placeholder='Enter job description' />
-          <Input label='Location*' placeholder='Enter location' />
-        </div>
-        <Button text='Post' />
       </div>
     </div>
   )
