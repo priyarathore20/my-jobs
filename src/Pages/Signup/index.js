@@ -6,6 +6,11 @@ import Name from '../../Components/Name';
 
 const Signup = () => {
   const [userType, setUserType] = useState();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [skills, setSkills] = useState();
 
   return (
     <div className="body">
@@ -32,29 +37,45 @@ const Signup = () => {
           >
             Candidate
           </div>
-          {/* < Button text='Recruiter' onClick={() => setUserType("recruiter")} />
-          < Button text='Candidate' onClick={() => setUserType("candidate")}/> */}
         </div>
         <div className="forms">
-          <Input label="Name*" placeholder="Enter your full name" type="text" />
           <Input
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            label="Name*"
+            placeholder="Enter your full name"
+            type="text"
+          />
+          <Input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
             label="Email address*"
             placeholder="Enter your email"
             type="text"
           />
           <div className="form">
             <Input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               label="Create password*"
               placeholder="Enter your password"
               type="password"
             />
             <Input
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
               label="Confirm password*"
               placeholder="Confirm password"
               type="password"
             />
           </div>
-          <Input label="Skills" placeholder="Enter your skills" type="text" />
+          <Input
+            onChange={(e) => setSkills(e.target.value)}
+            value={skills}
+            label="Skills"
+            placeholder="Enter your skills"
+            type="text"
+          />
         </div>
         <Button text="Signup" />
       </div>
