@@ -11,7 +11,7 @@ const PostedJobs = () => {
       <div className='navbar'>
         < Name />
         <div className="post">
-          <a href="/new-post">Post a job</a>
+          <a className='Post-link' href="/new-post">Post a job</a>
           <Avatar>P</Avatar>
         </div>
       </div>
