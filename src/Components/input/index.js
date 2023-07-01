@@ -1,11 +1,11 @@
 import React from 'react'
 import './styles.css'
 
-const Input = (props) => {
+const Input = ({ label, placeholder, type, onChange = () => { }, value = '' }) => {
   return (
     <div>
-      <label >{props?.label}</label>
-      <input className='input' type={props.type} placeholder={props.placeholder} />
+      <label >{label}</label>
+      <input onChange={onChange} value={value} className='input' type={type} placeholder={placeholder} />
     </div>
   )
 }

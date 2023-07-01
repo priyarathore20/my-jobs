@@ -44,3 +44,20 @@ span{
   justify-content: space-evenly;
   gap: 15px;
 }
+.usertype-btn{
+    width: 102px;
+    height: 40px;
+    color: #43afff;
+    text-align: center;
+    /* background: #43afff; */
+    border: 1px solid #43afff;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    }
+.usertype-btn-selected{
+    background: #43afff;
+color: #fff;
+}
