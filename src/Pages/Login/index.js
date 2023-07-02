@@ -12,13 +12,13 @@ const Loginpage = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
-    if (email === '') {
+    if (email.trim() === '') {
       setError({
         ...error,
         email: true,
       });
     }
-    if (password === '') {
+    if (password.trim() === '') {
       setError({
         ...error,
         password: true,
