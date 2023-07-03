@@ -5,7 +5,7 @@ import Input from '../../Components/input';
 import Name from '../../Components/Name';
 
 const Signup = () => {
-  const [userType, setUserType] = useState();
+  const [userType, setUserType] = useState(0);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,39 +14,41 @@ const Signup = () => {
   const [error, setError] = useState({ name: false, email: false, password: false, confirmPassword: false, skills: false });
 
   const handleFormSubmit = (e) => {
+    let error = { name: false, email: false, password: false, confirmPassword: false, skills: false }
     e.preventDefault();
     console.log('clicked');
     if (name.trim() === '') {
-      setError({
+      error = {
         ...error,
         name: true,
-      });
+      };
     }
     if (email.trim() === '') {
-      setError({
+      error = {
         ...error,
         email: true,
-      });
+      };
     }
     if (password.trim() === '') {
-      setError({
+      error = {
         ...error,
         password: true,
-      });
+      };
     }
     if (confirmPassword.trim() === '') {
-      setError({
+      error = {
         ...error,
         confirmPassword: true,
-      });
+      };
     }
     if (skills.trim() === '') {
-      setError({
+      error = {
         ...error,
         skills: true,
-      });
+      };
     }
     console.log(error);
+    setError(error)
   };
 
 

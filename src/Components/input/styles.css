@@ -12,6 +12,7 @@
   text-align: right;
   margin: 5px 0 10px 0;
   font-size: medium;
+  outline: none;
 }
 .label{
   margin: 5px 0;

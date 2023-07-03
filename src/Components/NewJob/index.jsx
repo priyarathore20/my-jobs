@@ -14,26 +14,28 @@ const NewPost = () => {
   const [error, setError] = useState({ jobTitle: false, jobDescription: false, jobLocation: false });
 
   const handleFormSubmit = (e) => {
+    let error = { jobTitle: false, jobDescription: false, jobLocation: false }
     e.preventDefault();
     console.log('clicked');
     if (jobTitle.trim() === '') {
-      setError({
+      error = {
         ...error,
         jobTitle: true,
-      });
+      };
     }
     if (jobDescription.trim() === '') {
-      setError({
+      error = {
         ...error,
         jobDescription: true,
-      });
+      };
     }
     if (jobLocation.trim() === '') {
-      setError({
+      error = {
         ...error,
         jobLocation: true,
-      });
+      };
     }
+    setError(error)
     console.log(error);
   };
 

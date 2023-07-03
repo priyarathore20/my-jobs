@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import FirebaseProvider from './Context/Firebase';
 import reportWebVitals from './reportWebVitals';
+import { SnackbarProvider } from 'notistack'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <FirebaseProvider>
+  <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
+    <React.StrictMode>
       <App />
-    </FirebaseProvider>
-  </React.StrictMode>
+    </React.StrictMode>
+  </SnackbarProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

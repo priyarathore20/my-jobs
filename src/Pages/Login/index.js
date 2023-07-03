@@ -3,28 +3,29 @@ import './styles.css';
 import Input from '../../Components/input';
 import Button from '../../Components/Button';
 import Name from '../../Components/Name';
+import axios from 'axios';
+import { enqueueSnackbar } from 'notistack';
 
 const Loginpage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('abcd@1234gmail.com');
+  const [password, setPassword] = useState('123456');
   const [error, setError] = useState({ email: false, password: false });
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
+    let error = { email: false, password: false };
     e.preventDefault();
     console.log('clicked');
-    if (email.trim() === '') {
-      setError({
-        ...error,
-        email: true,
+    try {
+      const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/login', {
+        email: email,
+        password: password
       });
+      console.log("response :", response.data)
+    } catch (error) {
+      setError(error)
+      enqueueSnackbar(error.message, { variant: 'error' })
+      console.log(error)
     }
-    if (password.trim() === '') {
-      setError({
-        ...error,
-        password: true,
-      });
-    }
-    console.log(error);
   };
 
   return (
