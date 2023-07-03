@@ -7,10 +7,30 @@ import Name from '../../Components/Name';
 const Signup = () => {
   const [userType, setUserType] = useState();
   const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
-  const [skills, setSkills] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [skills, setSkills] = useState('');
+  const [error, setError] = useState({ email: false, password: false });
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log('clicked');
+    if (email.trim() === '') {
+      setError({
+        ...error,
+        email: true,
+      });
+    }
+    if (password.trim() === '') {
+      setError({
+        ...error,
+        password: true,
+      });
+    }
+    console.log(error);
+  };
+
 
   return (
     <div className="body">
@@ -23,17 +43,15 @@ const Signup = () => {
           <span>i'm a</span>
           <div className="buttons">
             <div
-              className={`usertype-btn ${
-                userType === 0 ? 'usertype-btn-selected' : 'a'
-              }`}
+              className={`usertype-btn ${userType === 0 ? 'usertype-btn-selected' : 'a'
+                }`}
               onClick={() => setUserType(0)}
             >
               Recruiter
             </div>
             <div
-              className={`usertype-btn ${
-                userType === 1 ? 'usertype-btn-selected' : ''
-              }`}
+              className={`usertype-btn ${userType === 1 ? 'usertype-btn-selected' : ''
+                }`}
               onClick={() => setUserType(1)}
             >
               Candidate

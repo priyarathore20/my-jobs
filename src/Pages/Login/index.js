@@ -13,10 +13,7 @@ const Loginpage = () => {
     e.preventDefault();
     console.log('clicked');
     if (email.trim() === '') {
-      setError({
-        ...error,
-        email: true,
-      });
+      setError(prev => {...prev, email:true});
     }
     if (password.trim() === '') {
       setError({
