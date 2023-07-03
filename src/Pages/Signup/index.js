@@ -3,6 +3,8 @@ import './Styles.css';
 import Button from '../../Components/Button';
 import Input from '../../Components/input';
 import Name from '../../Components/Name';
+import axios from 'axios';
+import { enqueueSnackbar } from 'notistack';
 
 const Signup = () => {
   const [userType, setUserType] = useState(0);
@@ -13,44 +15,28 @@ const Signup = () => {
   const [skills, setSkills] = useState('');
   const [error, setError] = useState({ name: false, email: false, password: false, confirmPassword: false, skills: false });
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     let error = { name: false, email: false, password: false, confirmPassword: false, skills: false }
     e.preventDefault();
     console.log('clicked');
-    if (name.trim() === '') {
-      error = {
-        ...error,
-        name: true,
-      };
+    if (error.email === true || error.password === true || error.name === true || error.confirmPassword === true || error.skills === true && password !== confirmPassword) {
+      return;
     }
-    if (email.trim() === '') {
-      error = {
-        ...error,
-        email: true,
-      };
+    try {
+      const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/register', {
+        name: name,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+        skills: skills
+      });
+      console.log("response :", response.data)
+    } catch (error) {
+      setError(error)
+      enqueueSnackbar(error.message, { variant: 'error' })
+      console.log(error)
     }
-    if (password.trim() === '') {
-      error = {
-        ...error,
-        password: true,
-      };
-    }
-    if (confirmPassword.trim() === '') {
-      error = {
-        ...error,
-        confirmPassword: true,
-      };
-    }
-    if (skills.trim() === '') {
-      error = {
-        ...error,
-        skills: true,
-      };
-    }
-    console.log(error);
-    setError(error)
   };
-
 
   return (
     <div className="body">
