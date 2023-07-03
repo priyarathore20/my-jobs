@@ -13,7 +13,10 @@ const Loginpage = () => {
     e.preventDefault();
     console.log('clicked');
     if (email.trim() === '') {
-      setError(prev => {...prev, email:true});
+      setError({
+        ...error,
+        email: true,
+      });
     }
     if (password.trim() === '') {
       setError({
@@ -32,7 +35,7 @@ const Loginpage = () => {
         </div>
         <div className="upper-section">
           <form onSubmit={handleFormSubmit}>
-            <div className="job-card">
+            <div className="login-card">
               <h4 className="login-title">Login</h4>
               <div className="login-details">
                 <Input
@@ -57,7 +60,7 @@ const Loginpage = () => {
               </div>
               <Button type="submit" text="Submit" />
               <p className="login-link-1">
-                New To MyJobs?{' '}
+                New To MyJobs?
                 <a className="login-link-2" href="/signup">
                   Create An Account.
                 </a>

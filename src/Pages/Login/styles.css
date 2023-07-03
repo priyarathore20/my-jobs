@@ -1,6 +1,6 @@
   .login-title{
     padding: 10px;
-    margin: 5px;
+    margin: 20px 0;
     font-size: 30px;
   }
   .login-details{
@@ -10,7 +10,7 @@
     padding: 10px;
   }
 .login-link-1{
-  margin-top: 15px;
+  margin-top: 25px;
   text-align: center;
 }
 .login-link{
@@ -21,4 +21,15 @@
 .login-link-2{
   color: #43AFFF;
   text-decoration: none;
+}
+.login-card{
+  width: 500px;
+  background-color: white;
+  height: 520px;
+  margin: 25px 50px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+padding: 10px;
 }
