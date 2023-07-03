@@ -8,9 +8,35 @@ import "./styles.css"
 import { Avatar } from '@mui/material'
 
 const NewPost = () => {
-  const [jobTitle, setJobTitle] = useState()
-  const [jobDescription, setJobDescription] = useState()
-  const [jobLocation, setJobLocation] = useState()
+  const [jobTitle, setJobTitle] = useState('')
+  const [jobDescription, setJobDescription] = useState('')
+  const [jobLocation, setJobLocation] = useState('')
+  const [error, setError] = useState({ jobTitle: false, jobDescription: false, jobLocation: false });
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log('clicked');
+    if (jobTitle.trim() === '') {
+      setError({
+        ...error,
+        jobTitle: true,
+      });
+    }
+    if (jobDescription.trim() === '') {
+      setError({
+        ...error,
+        jobDescription: true,
+      });
+    }
+    if (jobLocation.trim() === '') {
+      setError({
+        ...error,
+        jobLocation: true,
+      });
+    }
+    console.log(error);
+  };
+
 
   return (
     <div className='body'>
@@ -26,12 +52,12 @@ const NewPost = () => {
           <div >
             <h3 className='new-title'>Post a Job</h3>
           </div>
-          <div>
-            <Input onChange={(e) => setJobTitle(e.target.value)} value={jobTitle} type='text' label='Job Title*' placeholder='Enter job title' />
-            <Input onChange={(e) => setJobDescription(e.target.value)} value={jobDescription} type='text' label='Job Description*' placeholder='Enter job description' />
-            <Input onChange={(e) => setJobLocation(e.target.value)} value={jobLocation} type='text' label='Location*' placeholder='Enter location' />
-          </div>
-          <Button text='Post' />
+          <form onSubmit={handleFormSubmit}>
+            <Input error={error.jobTitle} onChange={(e) => setJobTitle(e.target.value)} value={jobTitle} type='text' label='Job Title*' placeholder='Enter job title' />
+            <Input error={error.jobDescription} onChange={(e) => setJobDescription(e.target.value)} value={jobDescription} type='text' label='Job Description*' placeholder='Enter job description' />
+            <Input error={error.jobLocation} onChange={(e) => setJobLocation(e.target.value)} value={jobLocation} type='text' label='Location*' placeholder='Enter location' />
+            <Button type='submit' text='Post' />
+          </form>
         </div>
       </div>
     </div>
