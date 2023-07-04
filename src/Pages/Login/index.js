@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles.css';
 import Input from '../../Components/input';
 import Button from '../../Components/Button';
 import Name from '../../Components/Name';
 import axios from 'axios';
 import { enqueueSnackbar } from 'notistack';
+import { AuthContext } from '../../Context/AuthContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Loginpage = () => {
   const [email, setEmail] = useState('abcd@1234gmail.com');
   const [password, setPassword] = useState('123456');
   const [error, setError] = useState({ email: false, password: false });
+  const {setCurrentUser} = useContext(AuthContext)
+  const navigate = useNavigate() 
 
   const handleFormSubmit = async (e) => {
     let error = { email: false, password: false };
     e.preventDefault();
-    console.log('clicked');
     try {
       const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/login', {
         email: email,
         password: password
       });
-      console.log("response :", response.data)
+      setCurrentUser(response.data.data)
+      navigate ('/available-jobs') 
     } catch (error) {
       setError(error)
       enqueueSnackbar(error.message, { variant: 'error' })
-      console.log(error)
     }
   };
 

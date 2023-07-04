@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import { useAuthContext } from './context/Context';
+import AuthContext from "./Context/AuthContext"
 import { SnackbarProvider } from 'notistack'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <useAuthContext>
+  <AuthContext>
     <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </SnackbarProvider>
-  // </useAuthContext>
+    </AuthContext>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Name from '../../Components/Name'
 import { Avatar } from '@mui/material'
 import "./styles.css"
 import JobCards from '../../Components/JobCards'
 import PostedCards from '../../Components/PostedCards'
 import { FaHome } from 'react-icons/fa'
+import { AuthContext } from '../../Context/AuthContext'
 
 const AvailableJobs = () => {
+  const {currentUser} = useContext(AuthContext)
+
+  console.log(currentUser)
   return (
     <div className='body'>
       <div className='navbar'>
