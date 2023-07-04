@@ -29,9 +29,6 @@ const AvailableJobs = () => {
         <PostedCards number='4' text='Job Information is given here.' location='Delhi' button='Apply' />
         <PostedCards number='5' text='Job Information is given here.' location='Delhi' button='Apply' />
         <PostedCards number='6' text='Job Information is given here.' location='Delhi' button='Apply' />
-        <PostedCards number='7' text='Job Information is given here.' location='Delhi' button='Apply' />
-        <PostedCards number='8' text='Job Information is given here.' location='Delhi' button='Apply' />
-        <PostedCards number='9' text='Job Information is given here.' location='Delhi' button='Apply' />
       </div>
     </div>
   )

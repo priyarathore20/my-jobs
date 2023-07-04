@@ -2,29 +2,30 @@ import React, { useState } from 'react'
 import Name from "../../Components/Name"
 import Input from "../../Components/input"
 import Button from "../../Components/Button"
+import axios from 'axios'
+import { enqueueSnackbar } from 'notistack'
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState({ newPassword: false, confirmPassword: false });
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     let error = { newPassword: false, confirmPassword: false }
     e.preventDefault();
     console.log('clicked');
-    if (newPassword.trim() === '') {
-      error = {
-        ...error,
-        newPassword: true,
-      };
+    try {
+      const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/resetpassword', {
+        newPassword: newPassword,
+        confirmPassword: confirmPassword,
+        // token: { response.data.token }
+      });
+      console.log("response :", response.data)
+    } catch (error) {
+      setError(error)
+      enqueueSnackbar(error.message, { variant: 'error' })
+      console.log(error)
     }
-    if (confirmPassword.trim() === '') {
-      error = {
-        ...error,
-        confirmPassword: true,
-      };
-    }
-    setError(error)
   }
   return (
     <div>

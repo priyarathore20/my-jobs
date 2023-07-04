@@ -12,6 +12,7 @@
   font-size: larger;
   text-decoration: none;
 }
+
 .job-cards{
   display: grid;
   grid-template-columns: auto auto auto;
