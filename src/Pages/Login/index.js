@@ -6,7 +6,7 @@ import Name from '../../Components/Name';
 import axios from 'axios';
 import { enqueueSnackbar } from 'notistack';
 import { AuthContext } from '../../Context/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Loginpage = () => {
   const [email, setEmail] = useState('abcd@1234gmail.com');
@@ -15,8 +15,7 @@ const Loginpage = () => {
   const {setCurrentUser} = useContext(AuthContext)
   const navigate = useNavigate() 
 
-  const handleFormSubmit = async (e) => {
-    let error = { email: false, password: false };
+ const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/login', {

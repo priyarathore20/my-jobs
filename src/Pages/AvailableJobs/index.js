@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Name from '../../Components/Name'
 import { Avatar } from '@mui/material'
 import "./styles.css"
@@ -11,6 +11,10 @@ const AvailableJobs = () => {
   const {currentUser} = useContext(AuthContext)
 
   console.log(currentUser)
+
+  useEffect(()=>{
+  },[])
+
   return (
     <div className='body'>
       <div className='navbar'>
