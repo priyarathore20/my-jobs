@@ -12,21 +12,26 @@ const Loginpage = () => {
   const [email, setEmail] = useState('abcd@1234gmail.com');
   const [password, setPassword] = useState('123456');
   const [error, setError] = useState({ email: false, password: false });
-  const {setCurrentUser} = useContext(AuthContext)
-  const navigate = useNavigate() 
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
- const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/login', {
-        email: email,
-        password: password
-      });
-      setCurrentUser(response.data.data)
-      navigate ('/available-jobs') 
+      const response = await axios.post(
+        'https://jobs-api.squareboat.info/api/v1/auth/login',
+        {
+          email: email,
+          password: password,
+        }
+      );
+      setCurrentUser(response.data.data);
+
+      localStorage.setItem('user', JSON.stringify(response.data.data));
+      navigate('/available-jobs');
     } catch (error) {
-      setError(error)
-      enqueueSnackbar(error.message, { variant: 'error' })
+      setError(error);
+      enqueueSnackbar(error.message, { variant: 'error' });
     }
   };
 

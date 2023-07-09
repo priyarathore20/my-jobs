@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './Pages/Home';
 import Loginpage from './Pages/Login';
@@ -9,8 +9,20 @@ import PostedJobs from './Pages/PostedJobs';
 import Signup from './Pages/Signup';
 import NewPost from './Components/NewJob';
 import AppliedJobs from './Pages/AppliedJobs';
+import { AuthContext } from './Context/AuthContext';
 
 const App = () => {
+  const { setCurrentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+
+    if (user != null) {
+      //  to parse json from string
+      setCurrentUser(JSON.parse(user));
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -26,6 +38,6 @@ const App = () => {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
