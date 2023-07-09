@@ -13,6 +13,7 @@ const AvailableJobs = () => {
   console.log(currentUser)
 
   useEffect(()=>{
+    
   },[])
 
   return (
