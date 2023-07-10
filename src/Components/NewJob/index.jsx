@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from "../../Components/Button"
 import Name from "../../Components/Name"
 import Input from '../../Components/input'
@@ -6,12 +6,16 @@ import { FaHome } from 'react-icons/fa'
 import { LiaGreaterThanSolid } from 'react-icons/lia'
 import "./styles.css"
 import { Avatar } from '@mui/material'
+import { AuthContext } from '../../Context/AuthContext'
+import axios from 'axios'
 
 const NewPost = () => {
   const [jobTitle, setJobTitle] = useState('')
   const [jobDescription, setJobDescription] = useState('')
   const [jobLocation, setJobLocation] = useState('')
   const [error, setError] = useState({ jobTitle: false, jobDescription: false, jobLocation: false });
+  const [newJob, setNewJob] = useState('')
+const {currentUser} = useContext(AuthContext)
 
   const handleFormSubmit = (e) => {
     let error = { jobTitle: false, jobDescription: false, jobLocation: false }
@@ -37,6 +41,27 @@ const NewPost = () => {
     }
     setError(error)
     console.log(error);
+    const NewPost = async() => {
+      if(currentUser){
+        try {
+          const response = await axios.post({
+            'https://jobs-api.squareboat.info/api/v1/jobs/',
+            headers: {
+              Authorization: currentUser.token,
+            },
+            {
+              title: jobTitle,
+              description: jobDescription,
+              location: jobLocation
+            }
+        });
+                console.log("Response", response)
+
+        } catch (error) {
+          console.log(error)
+                }
+      }
+    }
   };
 
 
