@@ -4,14 +4,20 @@ import HomeCards from "../../Components/HomeCards"
 import CompaniesLogo from '../../Components/Logo';
 import Name from "../../Components/Name"
 import Button from "../../Components/Button"
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/login')
+  }
   return (
     <div>
       <div className="upper">
         <div className='navbar'>
           <Name />
-          <button className="nav-login">Login/Signup</button>
+          <button className="nav-login" onClick={handleClick}>Login/Signup</button>
         </div>
         <div className="upper-section">
           <div className='welcome-title'>
