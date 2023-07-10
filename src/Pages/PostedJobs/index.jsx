@@ -1,39 +1,68 @@
-import { Avatar } from '@mui/material'
-import React from 'react'
-import { FaHome } from 'react-icons/fa'
-import Name from '../../Components/Name'
-import PostedCards from '../../Components/PostedCards'
-import './styles.css'
+import { Avatar } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
+import { FaHome } from 'react-icons/fa';
+import Name from '../../Components/Name';
+import PostedCards from '../../Components/PostedCards';
+import './styles.css';
+import axios from 'axios';
+import { AuthContext } from '../../Context/AuthContext';
 
 const PostedJobs = () => {
+  const { currentUser } = useContext(AuthContext);
+  const [postedJobs, setPostedJobs] = useState([])
+
+  const fetchPostedJobs = async () => {
+    if (currentUser) {
+      try {
+        const res = await axios({
+          method: 'get',
+          url: 'https://jobs-api.squareboat.info/api/v1/recruiters/jobs',
+          headers: {
+            Authorization: currentUser?.token,
+          },
+        });
+        setPostedJobs(res.data.data.data);
+        console.log(setPostedJobs)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchPostedJobs();
+  }, [currentUser]);
+
+
   return (
-    <div className='body'>
-      <div className='navbar'>
-        < Name />
+    <div className="body">
+      <div className="navbar">
+        <Name />
         <div className="post">
-          <a className='Post-link' href="/new-post">Post a job</a>
+          <a className="Post-link" href="/new-post">
+            Post a job
+          </a>
           <Avatar>P</Avatar>
         </div>
       </div>
       <div className="home">
         <FaHome /> Home
       </div>
-      <div className="job-heading">
-        Jobs Posted By You :
-      </div>
+      <div className="job-heading">Jobs Posted By You :</div>
       <div className="job-cards">
-        <PostedCards number='1' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='2' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='3' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='4' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='5' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='6' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='7' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='8' text='Job Information is given here.' location='Delhi' button='View Applications' />
-        <PostedCards number='9' text='Job Information is given here.' location='Delhi' button='View Applications' />
+        {postedJobs.map((item)=>(
+          <>
+           <PostedCards
+          number={item?.title}
+          text={item?.description}
+          location={item?.location}
+          button="View Applications"
+        />
+          </>
+        ))}
+       
       </div>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default PostedJobs
+export default PostedJobs;

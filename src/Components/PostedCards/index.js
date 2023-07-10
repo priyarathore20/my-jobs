@@ -13,8 +13,8 @@ const PostedCards = ({
     <div className="Job-cards">
       <div className="job-card">
         <div className="jobcard-body">
-          <div className="jobcard-header">Job No. : {number}</div>
-          <p className="jobcard-text">{text}</p>
+          <div className="jobcard-header">Job : {number}</div>
+          <p className="jobcard-text" style={{fontSize: 15}}>{text}</p>
           <div className="jobcard-btn">
             <div className="jobcard-icon">
               <FaMapMarkerAlt />
