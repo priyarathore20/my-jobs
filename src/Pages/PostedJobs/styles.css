@@ -26,12 +26,18 @@ grid-template-columns: auto auto auto;
   width: auto;
   background-color: #fff;
 }
-.application-card{
+.dialog{
   display:flex;
  flex-direction:column;
  justify-content:center;
  align-items:center;
+ height: fit-content;
+ width: fit-content;
  
+}
+.appbar{
+  background-color: #fff;
+  color: rgb(60, 56, 56);
 }
 .avatar{
   text-transform: capitalize;

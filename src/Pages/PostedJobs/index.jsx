@@ -16,7 +16,6 @@ import PostedCards from '../../Components/PostedCards';
 import './styles.css';
 import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
-import dropDown from '../../Components/Dropdown';
 import { Close } from '@mui/icons-material';
 
 const PostedJobs = () => {
@@ -84,7 +83,6 @@ const PostedJobs = () => {
             Post a job
           </a>
           <Avatar className="avatar">{initial}</Avatar>
-          <dropDown />
         </div>
       </div>
       <div className="home">
@@ -104,12 +102,12 @@ const PostedJobs = () => {
           </>
         ))}
       </div>
-      <Dialog open={openDialog} onClose={handleClose}>
-        <AppBar sx={{ position: 'relative' }}>
+      <Dialog className='dialog' open={openDialog} onClose={handleClose}>
+        <AppBar className='appbar' sx={{ position: 'relative' }}>
           <Toolbar>
             <IconButton
               edge="start"
-              color="inherit"
+              // color="inherit"
               onClick={handleClose}
               aria-label="close"
             >
