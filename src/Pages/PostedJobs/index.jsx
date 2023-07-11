@@ -7,13 +7,14 @@ import PostedCards from '../../Components/PostedCards';
 import './styles.css';
 import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
+import dropDown from '../../Components/Dropdown';
 import { Close } from '@mui/icons-material';
 
 const PostedJobs = () => {
   const { currentUser } = useContext(AuthContext);
   const [postedJobs, setPostedJobs] = useState([])
   const [selectedJob, setSelectedJob] = useState({});
-  const [applyLoading, setApplyLoading] = useState(false);
+  // const [applyLoading, setApplyLoading] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
   const fetchPostedJobs = async () => {
@@ -44,6 +45,10 @@ const PostedJobs = () => {
 
   const handleClose = () => setOpenDialog(false);
 
+    let initial = currentUser?.name.charAt(0) 
+    // console.log(initial)
+
+
   return (
     <div className="body">
       <div className="navbar">
@@ -52,7 +57,8 @@ const PostedJobs = () => {
           <a className="Post-link" href="/new-post">
             Post a job
           </a>
-          <Avatar>P</Avatar>
+          <Avatar className='avatar'>{initial}</Avatar>
+          <dropDown />
         </div>
       </div>
       <div className="home">
@@ -66,7 +72,7 @@ const PostedJobs = () => {
           number={item?.title}
           text={item?.description}
           location={item?.location}
-          button="View Applications"
+          button='View Applications'
           onClick={handleApplications}
         />
           </>
@@ -92,7 +98,7 @@ const PostedJobs = () => {
         <DialogContent>
           Total 0 applications.
           <br /> 
-          <Card style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+          <Card className='application-card'>
             <GrDocumentText />
             <p>No applications available.</p>
           </Card>

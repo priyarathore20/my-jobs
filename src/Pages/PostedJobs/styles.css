@@ -26,3 +26,13 @@ grid-template-columns: auto auto auto;
   width: auto;
   background-color: #fff;
 }
+.application-card{
+  display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ 
+}
+.avatar{
+  text-transform: capitalize;
+}
