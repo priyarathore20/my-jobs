@@ -31,12 +31,9 @@ grid-template-columns: auto auto auto;
  flex-direction:column;
  justify-content:center;
  align-items:center;
- height: fit-content;
- width: fit-content;
- 
 }
 .appbar{
-  background-color: #fff;
+  background-color: white;
   color: rgb(60, 56, 56);
 }
 .avatar{
