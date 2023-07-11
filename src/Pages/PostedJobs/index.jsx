@@ -1,7 +1,16 @@
-import { AppBar, Avatar, Card,  Dialog, DialogContent, IconButton, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Avatar,
+  Card,
+  Dialog,
+  DialogContent,
+  IconButton,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { FaHome } from 'react-icons/fa';
-import {GrDocumentText} from "react-icons/gr"
+import { GrDocumentText } from 'react-icons/gr';
 import Name from '../../Components/Name';
 import PostedCards from '../../Components/PostedCards';
 import './styles.css';
@@ -12,7 +21,7 @@ import { Close } from '@mui/icons-material';
 
 const PostedJobs = () => {
   const { currentUser } = useContext(AuthContext);
-  const [postedJobs, setPostedJobs] = useState([])
+  const [postedJobs, setPostedJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState({});
   // const [applyLoading, setApplyLoading] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
@@ -28,26 +37,43 @@ const PostedJobs = () => {
           },
         });
         setPostedJobs(res.data.data.data);
-        console.log(setPostedJobs)
       } catch (error) {
         console.log(error);
       }
     }
   };
+
+  const fetchOneJobApplicants = async (item) => {
+     setOpenDialog(true)
+     setSelectedJob(item);
+
+      if (currentUser) {
+        try {
+          const res = await axios({
+            method: 'get',
+            url: 'https://jobs-api.squareboat.info/api/v1/recruiters/jobs/'+item?.id+'/candidates',
+            headers: {
+              Authorization: currentUser?.token,
+            },
+          });
+          setPostedJobs(res.data.data.data);
+          console.log(setPostedJobs)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    console.log(item);
+  };
+
   useEffect(() => {
     fetchPostedJobs();
   }, [currentUser]);
- 
-  const handleApplications = (item) => {
-    setSelectedJob(item);
-    setOpenDialog(true);
-  };
+
 
   const handleClose = () => setOpenDialog(false);
 
-    let initial = currentUser?.name.charAt(0) 
-    // console.log(initial)
-
+  let initial = currentUser?.name.charAt(0);
+  // console.log(initial)
 
   return (
     <div className="body">
@@ -57,7 +83,7 @@ const PostedJobs = () => {
           <a className="Post-link" href="/new-post">
             Post a job
           </a>
-          <Avatar className='avatar'>{initial}</Avatar>
+          <Avatar className="avatar">{initial}</Avatar>
           <dropDown />
         </div>
       </div>
@@ -66,18 +92,17 @@ const PostedJobs = () => {
       </div>
       <div className="job-heading">Jobs Posted By You :</div>
       <div className="job-cards">
-        {postedJobs.map((item)=>(
+        {postedJobs.map((item) => (
           <>
-           <PostedCards
-          number={item?.title}
-          text={item?.description}
-          location={item?.location}
-          button='View Applications'
-          onClick={handleApplications}
-        />
+            <PostedCards
+              number={item?.title}
+              text={item?.description}
+              location={item?.location}
+              button="View Applications"
+              onButtonClick={()=>fetchOneJobApplicants(item)}
+            />
           </>
         ))}
-       
       </div>
       <Dialog open={openDialog} onClose={handleClose}>
         <AppBar sx={{ position: 'relative' }}>
@@ -91,18 +116,18 @@ const PostedJobs = () => {
               <Close />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-            Applicants for this job.
+              Applicants for this job.
             </Typography>
           </Toolbar>
         </AppBar>
         <DialogContent>
           Total 0 applications.
-          <br /> 
-          <Card className='application-card'>
+          <br />
+          <Card className="application-card">
             <GrDocumentText />
             <p>No applications available.</p>
           </Card>
-        </DialogContent>     
+        </DialogContent>
       </Dialog>
     </div>
   );
