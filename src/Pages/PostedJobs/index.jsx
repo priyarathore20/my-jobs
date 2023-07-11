@@ -1,15 +1,20 @@
-import { Avatar } from '@mui/material';
+import { AppBar, Avatar, Card,  Dialog, DialogContent, IconButton, Toolbar, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { FaHome } from 'react-icons/fa';
+import {GrDocumentText} from "react-icons/gr"
 import Name from '../../Components/Name';
 import PostedCards from '../../Components/PostedCards';
 import './styles.css';
 import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
+import { Close } from '@mui/icons-material';
 
 const PostedJobs = () => {
   const { currentUser } = useContext(AuthContext);
   const [postedJobs, setPostedJobs] = useState([])
+  const [selectedJob, setSelectedJob] = useState({});
+  const [applyLoading, setApplyLoading] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const fetchPostedJobs = async () => {
     if (currentUser) {
@@ -31,7 +36,13 @@ const PostedJobs = () => {
   useEffect(() => {
     fetchPostedJobs();
   }, [currentUser]);
+ 
+  const handleApplications = (item) => {
+    setSelectedJob(item);
+    setOpenDialog(true);
+  };
 
+  const handleClose = () => setOpenDialog(false);
 
   return (
     <div className="body">
@@ -56,11 +67,37 @@ const PostedJobs = () => {
           text={item?.description}
           location={item?.location}
           button="View Applications"
+          onClick={handleApplications}
         />
           </>
         ))}
        
       </div>
+      <Dialog open={openDialog} onClose={handleClose}>
+        <AppBar sx={{ position: 'relative' }}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <Close />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+            Applicants for this job.
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <DialogContent>
+          Total 0 applications.
+          <br /> 
+          <Card style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+            <GrDocumentText />
+            <p>No applications available.</p>
+          </Card>
+        </DialogContent>     
+      </Dialog>
     </div>
   );
 };
