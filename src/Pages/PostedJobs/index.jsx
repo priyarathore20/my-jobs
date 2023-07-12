@@ -36,7 +36,6 @@ const PostedJobs = () => {
     await localStorage.removeItem(currentUser)
     navigate('/login')
   };
-//
 
   const fetchPostedJobs = async () => {
     if (currentUser) {
