@@ -4,26 +4,32 @@ import Input from "../../Components/input"
 import Button from "../../Components/Button"
 import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
+import { useSearchParams } from 'react-router-dom'
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState({ newPassword: false, confirmPassword: false });
+const [searchParams] = useSearchParams()
+// console.log(searchParams.get('token'))
+
 
   const handleFormSubmit = async (e) => {
-    let error = { newPassword: false, confirmPassword: false }
     e.preventDefault();
-    console.log('clicked');
     try {
-      const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/resetpassword', {
-        newPassword: newPassword,
-        confirmPassword: confirmPassword,
-        // token: { response.data.token }
+      const res = await axios({
+        method: 'post',
+        url:
+          'https://jobs-api.squareboat.info/api/v1/auth/resetpassword',
+        data: {
+          password: newPassword,
+          confirmPassword: confirmPassword,
+          token: searchParams.get('token')
+        }
       });
-      console.log("response :", response.data)
+      console.log(res)
     } catch (error) {
-      setError(error)
-      enqueueSnackbar(error.message, { variant: 'error' })
+      // setError(error)
+      enqueueSnackbar(error, { variant: 'error' })
       console.log(error)
     }
   }
@@ -39,9 +45,9 @@ const ResetPassword = () => {
             <form onSubmit={handleFormSubmit} className="reset-details">
               <h4 className='password-title'>Reset Your Password</h4>
               <p className='password-para'>Enter your new password below.</p>
-              <Input error={error.newPassword} onChange={(e) => setNewPassword(e.target.value)} value={newPassword} label='Enter new Password' placeholder="Enter Password" type='password' />
-              <Input error={error.confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} label='Confirm Password' placeholder="Confirm Password" type='password' />
-              <Button type='submit' text='Reset' />
+              <Input  onChange={(e) => setNewPassword(e.target.value)} value={newPassword} label='Enter new Password' placeholder="Enter Password" type='password' />
+              <Input  onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} label='Confirm Password' placeholder="Confirm Password" type='password' />
+              <Button type='submit' text='Reset' onClick={handleFormSubmit}/>
             </form>
           </div>
         </div>

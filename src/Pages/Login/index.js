@@ -12,7 +12,7 @@ const Loginpage = () => {
   const [email, setEmail] = useState('abcd@1234gmail.com');
   const [password, setPassword] = useState('password');
   const [error, setError] = useState({ email: false, password: false });
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const {  setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleFormSubmit = async (e) => {
