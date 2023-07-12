@@ -12,7 +12,7 @@ const Loginpage = () => {
   const [email, setEmail] = useState('abcd@1234gmail.com');
   const [password, setPassword] = useState('password');
   const [error, setError] = useState({ email: false, password: false });
-  const {  setCurrentUser } = useContext(AuthContext);
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleFormSubmit = async (e) => {
@@ -26,13 +26,8 @@ const Loginpage = () => {
         }
       );
       setCurrentUser(response.data.data);
-
       localStorage.setItem('user', JSON.stringify(response.data.data));
-      if("userRole" === 1){
       navigate('/available-jobs');
-      }else{
-        navigate('/posted-jobs')
-      }
     } catch (error) {
       setError(error);
       enqueueSnackbar(error.message, { variant: 'error' });

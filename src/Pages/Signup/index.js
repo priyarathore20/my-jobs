@@ -49,7 +49,7 @@ const Signup = () => {
           <span>i'm a</span>
           <div className="buttons">
             <div
-              className={`usertype-btn ${userType === 0 ? 'usertype-btn-selected' : 'a'
+              className={`usertype-btn ${userType === 0 ? 'usertype-btn-selected' : ''
                 }`}
               onClick={() => setUserType(0)}
             >
