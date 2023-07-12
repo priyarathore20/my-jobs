@@ -33,7 +33,7 @@ const PostedJobs = () => {
   const open = Boolean(anchorEl);
   const handleClick = async(event) => {
     setAnchorEl(event.currentTarget);
-    await localStorage.removeItem(currentUser)
+    await localStorage.removeItem('user')
     navigate('/login')
   };
 
