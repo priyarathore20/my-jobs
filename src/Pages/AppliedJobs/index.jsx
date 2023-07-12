@@ -52,15 +52,17 @@ useEffect(()=> {
       <div>
         <p className="job-heading">Jobs Applied by you :</p>
       </div>
-      <div className="job-cards">
-        {appliedJobs.map((item) => {
+      <div className="apply-cards">
+        {appliedJobs.map((item) => (
+          <>
           <PostedCards
             number={item?.title}
             text={item?.description}
             location={item?.location}
-            button={'Applied on' + item?.createdAt}
+            button='Already applied'
           />;
-        })}
+          </>
+        ))}
       </div>
     </div>
   );
