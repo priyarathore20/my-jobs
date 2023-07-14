@@ -10,7 +10,7 @@ import Signup from './Pages/Signup';
 import NewPost from './Components/NewJob';
 import AppliedJobs from './Pages/AppliedJobs';
 import { AuthContext } from './Context/AuthContext';
-// import PrivateRoute from './Router/PrivateRoute';
+import PrivateRoute from './Router/PrivateRoute';
 
 const App = () => {
   const { setCurrentUser } = useContext(AuthContext);
@@ -32,10 +32,10 @@ const App = () => {
         <Route path={'/signup'} element={<Signup />} />
         <Route path={'/password-reset'} element={<ForgotPassword />} />
         <Route path={'/new-password'} element={<ResetPassword />} />
-        <Route path={'/available-jobs'} element={<AvailableJobs />} />
-        <Route path={'/posted-jobs'} element={<PostedJobs />} />
-        <Route path={'/new-post'} element={<NewPost />} />
-        <Route path={'/applied-jobs'} element={<AppliedJobs />} />
+        <PrivateRoute path={'/available-jobs'} element={<AvailableJobs />} />
+        <PrivateRoute path={'/posted-jobs'} element={<PostedJobs />} />
+        <PrivateRoute path={'/new-post'} element={<NewPost />} />
+        <PrivateRoute path={'/applied-jobs'} element={<AppliedJobs />} />
       </Routes>
     </BrowserRouter>
   );
