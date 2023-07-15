@@ -6,7 +6,7 @@ import Name from '../../Components/Name';
 import axios from 'axios';
 import { enqueueSnackbar } from 'notistack';
 import { AuthContext } from '../../Context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Loginpage = () => {
   const [email, setEmail] = useState('abcd@1234gmail.com');
@@ -27,7 +27,7 @@ const Loginpage = () => {
       );
       setCurrentUser(response.data.data);
       localStorage.setItem('user', JSON.stringify(response.data.data));
-      navigate('/available-jobs');
+      navigate('/home');
     } catch (error) {
       setError(error);
       enqueueSnackbar(error.message, { variant: 'error' });
@@ -35,48 +35,54 @@ const Loginpage = () => {
   };
 
   return (
-    <div className="body">
-      <div>
-        <div className="navbar">
-          <Name />
-        </div>
-        <div className="upper-section">
-          <form onSubmit={handleFormSubmit}>
-            <div className="login-card">
-              <h4 className="login-title">Login</h4>
-              <div className="login-details">
-                <Input
-                  error={error.email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  label="Email address"
-                  type="text"
-                  placeholder="Enter your email"
-                />
-                <Input
-                  error={error.password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  label="Password"
-                  type="password"
-                  placeholder="Enter password"
-                />
-                <a className="login-link" href="/password-reset">
-                  Forgot Your Password?
-                </a>
-              </div>
-              <Button type="submit" text="Submit" />
-              <p className="login-link-1">
-                New To MyJobs?
-                <a className="login-link-2" href="/signup">
-                  Create An Account.
-                </a>
-              </p>
+    <>
+      {currentUser ? (
+        <Navigate to={'/home'} />
+      ) : (
+        <div className="body">
+          <div>
+            <div className="navbar">
+              <Name />
             </div>
-          </form>
+            <div className="upper-section">
+              <form onSubmit={handleFormSubmit}>
+                <div className="login-card">
+                  <h4 className="login-title">Login</h4>
+                  <div className="login-details">
+                    <Input
+                      error={error.email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      label="Email address"
+                      type="text"
+                      placeholder="Enter your email"
+                    />
+                    <Input
+                      error={error.password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      label="Password"
+                      type="password"
+                      placeholder="Enter password"
+                    />
+                    <a className="login-link" href="/password-reset">
+                      Forgot Your Password?
+                    </a>
+                  </div>
+                  <Button type="submit" text="Submit" />
+                  <p className="login-link-1">
+                    New To MyJobs?
+                    <a className="login-link-2" href="/signup">
+                      Create An Account.
+                    </a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

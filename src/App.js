@@ -1,16 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './Pages/Home';
-import Loginpage from './Pages/Login';
-import ForgotPassword from './Pages/ForgotPassword';
-import ResetPassword from './Pages/ResetPassword';
-import AvailableJobs from './Pages/AvailableJobs';
-import PostedJobs from './Pages/PostedJobs';
-import Signup from './Pages/Signup';
-import NewPost from './Components/NewJob';
-import AppliedJobs from './Pages/AppliedJobs';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthContext } from './Context/AuthContext';
-import PrivateRoute from './Router/PrivateRoute';
+import { routes } from './Router/routes';
 
 const App = () => {
   const { setCurrentUser } = useContext(AuthContext);
@@ -21,21 +12,32 @@ const App = () => {
     if (user != null) {
       //  to parse json from string
       setCurrentUser(JSON.parse(user));
+
+      console.log(user);
     }
   }, []);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={'/'} element={<HomePage />} />
-        <Route path={'/login'} element={<Loginpage />} />
-        <Route path={'/signup'} element={<Signup />} />
-        <Route path={'/password-reset'} element={<ForgotPassword />} />
-        <Route path={'/new-password'} element={<ResetPassword />} />
-        <PrivateRoute path={'/available-jobs'} element={<AvailableJobs />} />
-        <PrivateRoute path={'/posted-jobs'} element={<PostedJobs />} />
-        <PrivateRoute path={'/new-post'} element={<NewPost />} />
-        <PrivateRoute path={'/applied-jobs'} element={<AppliedJobs />} />
+        {routes.map((item) => {
+          const { name, component: Component, isProtected, path } = item;
+          const isAuthenticated = localStorage.getItem('user') != null;
+
+          return (
+            <Route
+              key={name}
+              path={path}
+              element={
+                !isProtected || isAuthenticated ? (
+                  <Component />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+          );
+        })}
       </Routes>
     </BrowserRouter>
   );

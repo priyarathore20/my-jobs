@@ -22,19 +22,20 @@ import { Close } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const PostedJobs = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const [postedJobs, setPostedJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState({});
+  const [jobCandidates, setJobCandidates] = useState([]);
   // const [applyLoading, setApplyLoading] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   //
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = async(event) => {
+  const handleClick = async (event) => {
     setAnchorEl(event.currentTarget);
-    await localStorage.removeItem('user')
-    navigate('/login')
+    await localStorage.removeItem('user');
+    navigate('/login');
   };
 
   const fetchPostedJobs = async () => {
@@ -70,8 +71,7 @@ const PostedJobs = () => {
             Authorization: currentUser?.token,
           },
         });
-        setPostedJobs(res.data.data.data);
-        console.log(setPostedJobs);
+        setJobCandidates(res.data.data.data);
       } catch (error) {
         console.log(error);
       }
@@ -112,16 +112,16 @@ const PostedJobs = () => {
               {initial}
             </Avatar>
             <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={HandleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={HandleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
           </div>
         </div>
       </div>
@@ -199,6 +199,10 @@ const PostedJobs = () => {
                   width: '100px',
                 }}
               />
+
+              {jobCandidates?.map((item) => (
+                <div>{item.name}</div>
+              ))}
               <p style={{ backgroundColor: 'grey' }}>
                 No applications available.
               </p>
