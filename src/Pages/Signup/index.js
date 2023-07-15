@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Styles.css';
 import Button from '../../Components/Button';
 import Input from '../../Components/input';
 import Name from '../../Components/Name';
 import axios from 'axios';
 import { enqueueSnackbar } from 'notistack';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Signup = () => {
   const [userType, setUserType] = useState(0);
@@ -13,16 +15,11 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [skills, setSkills] = useState('');
-  const [error, setError] = useState({ name: false, email: false, password: false, confirmPassword: false, skills: false });
+  const {currentUser} = useContext(AuthContext)
 
   const handleFormSubmit = async (e) => {
-    let error = { name: false, email: false, password: false, confirmPassword: false, skills: false }
     e.preventDefault();
-    console.log('clicked');
-    if (error.email === true || error.password === true || error.name === true || error.confirmPassword === true || error.skills === true && password !== confirmPassword) {
-      return;
-    }
-    try {
+       try {
       const response = await axios.post('https://jobs-api.squareboat.info/api/v1/auth/register', {
         name: name,
         email: email,
@@ -32,13 +29,16 @@ const Signup = () => {
       });
       console.log("response :", response.data)
     } catch (error) {
-      setError(error)
       enqueueSnackbar(error.message, { variant: 'error' })
       console.log(error)
     }
   };
 
   return (
+    <>
+    {currentUser ? (
+        <Navigate to={'/home'} />
+    ) : (
     <div className="body">
       <div className="navbar">
         <Name />
@@ -65,7 +65,6 @@ const Signup = () => {
           </div>
           <div className="forms">
             <Input
-              error={error.name}
               onChange={(e) => setName(e.target.value)}
               value={name}
               label="Name*"
@@ -73,7 +72,6 @@ const Signup = () => {
               type="text"
             />
             <Input
-              error={error.email}
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               label="Email address*"
@@ -82,7 +80,6 @@ const Signup = () => {
             />
             <div className="form">
               <Input
-                error={error.password}
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 label="Create password*"
@@ -90,7 +87,6 @@ const Signup = () => {
                 type="password"
               />
               <Input
-                error={error.confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 value={confirmPassword}
                 label="Confirm password*"
@@ -99,7 +95,6 @@ const Signup = () => {
               />
             </div>
             <Input
-              error={error.skills}
               onChange={(e) => setSkills(e.target.value)}
               value={skills}
               label="Skills"
@@ -111,6 +106,8 @@ const Signup = () => {
         </form>
       </div>
     </div>
+    )}
+    </>
   );
 };
 

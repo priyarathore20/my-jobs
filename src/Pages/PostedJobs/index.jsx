@@ -192,6 +192,21 @@ const PostedJobs = () => {
                 gap: '20px',
               }}
             >
+              { jobCandidates ? (
+              jobCandidates?.map((item) => (
+                <><div>
+                  <Avatar>{initial}</Avatar>
+                  <div>
+                    <h5>{item?.name}</h5>
+                    <p>{item?.email}</p>
+                  </div>
+                </div><div>
+                    <h4>Skillls</h4>
+                    <p>{item?.skills}</p>
+                  </div></>
+              ))
+              ) : (
+                <>
               <GrDocumentText
                 style={{
                   height: '80px',
@@ -199,13 +214,11 @@ const PostedJobs = () => {
                   width: '100px',
                 }}
               />
-
-              {jobCandidates?.map((item) => (
-                <div>{item.name}</div>
-              ))}
               <p style={{ backgroundColor: 'grey' }}>
                 No applications available.
               </p>
+               </>
+               )}
             </Card>
           </DialogContent>
         </Dialog>

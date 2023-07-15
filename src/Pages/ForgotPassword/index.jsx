@@ -4,7 +4,7 @@ import Input from '../../Components/input';
 import Name from '../../Components/Name';
 import Button from '../../Components/Button';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { enqueueSnackbar, useSnackbar } from 'notistack';
 import { AuthContext } from '../../Context/AuthContext';
 
@@ -48,6 +48,10 @@ const ForgotPassword = () => {
   // console.log(item);
 
   return (
+    <>
+    {currentUser ? (
+      <Navigate to={'/home'} />
+    ) : (
     <div className="body">
       <div>
         <div className="navbar">
@@ -80,6 +84,8 @@ const ForgotPassword = () => {
         </form>
       </div>
     </div>
+    )}
+    </>
   );
 };
 

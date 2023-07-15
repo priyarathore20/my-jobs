@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Name from '../../Components/Name';
 import Input from '../../Components/input';
 import Button from '../../Components/Button';
 import axios from 'axios';
 import { enqueueSnackbar } from 'notistack';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const {currentUser} = useContext(AuthContext)
   // console.log(searchParams.get('token'))
 
   const handleFormSubmit = async (e) => {
@@ -33,6 +35,10 @@ const ResetPassword = () => {
     }
   };
   return (
+    <>
+    {currentUser ? (
+        <Navigate to={'/home'} />
+    ) : (
     <div>
       <div className="body">
         <div className="navbar">
@@ -64,6 +70,8 @@ const ResetPassword = () => {
         </div>
       </div>
     </div>
+    )}
+    </>
   );
 };
 
