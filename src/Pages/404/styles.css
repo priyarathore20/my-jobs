@@ -1,0 +1,23 @@
+ .not-found{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+   margin: 10%;
+  /* height: 100%; */
+}
+/* .error-icon{
+   height: 50px;
+   width: 50px;
+   color: red;
+   margin: 15px;
+}
+.error-msg{
+  font-size: 50px;
+  color: red;
+  margin: 0 15px;
+} */
+.error-img{
+  height: 50%;
+  width: 50%;
+}
