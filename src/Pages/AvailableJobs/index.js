@@ -9,6 +9,8 @@ import {
   DialogActions,
   DialogContent,
   IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
 } from '@mui/material';
@@ -20,6 +22,7 @@ import { AuthContext } from '../../Context/AuthContext';
 import axios from 'axios';
 import { useState } from 'react';
 import { Close } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const AvailableJobs = () => {
   const { currentUser } = useContext(AuthContext);
@@ -33,9 +36,18 @@ const AvailableJobs = () => {
 
   // loading for fetching the available jobs on page-load
   const [fetchLoading, setFetchLoading] = useState(true);
+  const navigate = useNavigate()
 
   // loading for apply the job from the dialog
   const [applyLoading, setApplyLoading] = useState(false);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = async (event) => {
+    setAnchorEl(event.currentTarget);
+    await localStorage.removeItem('user');
+    navigate('/login');
+  };
 
   console.log(currentUser);
 
@@ -96,6 +108,12 @@ const AvailableJobs = () => {
     }
   };
 
+  const HandleClose = () => {
+    setAnchorEl(null);
+  };
+
+  let initial = currentUser?.name.charAt(0);
+
   return (
     <div className="body">
       <div className="navbar">
@@ -104,7 +122,29 @@ const AvailableJobs = () => {
           <a className="apply-link" href="/applied-jobs">
             Applied jobs
           </a>
-          <Avatar className="avatar">P</Avatar>
+         <div>
+         <Avatar
+              className="avatar"
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+            >
+              {initial}
+            </Avatar>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={HandleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
+        </div>
         </div>
       </div>
       <div className="breadcrumb">
